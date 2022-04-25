@@ -1,11 +1,23 @@
 package test;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
-import java.util.Arrays;
-import dao.*;
 
-import model.*;
+import dao.DAOAttaque;
+import dao.DAOCompte;
+import dao.DAOVivant;
+import entity.Admin;
+import entity.Attaque;
+import entity.Classe;
+import entity.Compte;
+import entity.Joueur;
+import entity.Metier;
+import entity.Monstre;
+import entity.Personnage;
+import entity.TypeAtt;
+import entity.TypeCible;
+import entity.Vivant;
 
 
 public class App {
@@ -61,14 +73,14 @@ public class App {
 	private static void rechercheAttaqueById(int id)
 	{
 		Attaque a = daoAttaque.findById(id);
-		System.out.println("------------- Attaque recherchée par ID -------------");
+		System.out.println("------------- Attaque recherchï¿½e par ID -------------");
 		System.out.println(a.toStringInForm());
 		System.out.println("-----------------------------------------------------");
 	}
 	private static void rechercheAttaqueByType(TypeAtt type)
 	{
 		List<Attaque> recherche = daoAttaque.findByType(type);
-		System.out.println("------------- Attaque recherchée par type -------------");
+		System.out.println("------------- Attaque recherchï¿½e par type -------------");
 		for (Attaque a : recherche) {
 			System.out.println("------");
 			System.out.println(a.toStringInForm());
@@ -92,14 +104,14 @@ public class App {
 	private static void rechercheCompteById(int id)
 	{
 		Compte c = daoCompte.findById(id);
-		System.out.println("------------- Compte recherchée par ID -------------");
+		System.out.println("------------- Compte recherchï¿½e par ID -------------");
 		System.out.println(c.toStringInForm());
 		System.out.println("-----------------------------------------------------");
 	}
 	private static void rechercheCompteByType(String type)
 	{
 		List<Compte> recherche = daoCompte.findByType(type);
-		System.out.println("------------- Compte recherchée par type -------------");
+		System.out.println("------------- Compte recherchï¿½e par type -------------");
 		for (Compte a : recherche) {
 			System.out.println("------");
 			System.out.println(a.toStringInForm());
@@ -129,7 +141,7 @@ public class App {
 	private static void rechercheVivantById(int id)
 	{
 		Vivant v = daoVivant.findById(id);
-		System.out.println("------------- Vivant recherchée par ID -------------");
+		System.out.println("------------- Vivant recherchï¿½e par ID -------------");
 		if (v instanceof Personnage) {
 			System.out.println(((Personnage)v).toStringInForm());
 		}
@@ -223,7 +235,7 @@ public class App {
 	}
 
 	private static void menuChoixPerso() {
-		System.out.println("+) Créer un nouveau personnage");
+		System.out.println("+) Crï¿½er un nouveau personnage");
 
 		int i = 1;
 
@@ -271,7 +283,7 @@ public class App {
 		}
 
 
-		System.out.println("Personnage crée");
+		System.out.println("Personnage crï¿½e");
 	}
 
 	private static void modifierPerso(){
@@ -290,18 +302,18 @@ public class App {
 		int attMagique = saisieInt("Valeur attaque magique : ");
 		int attPhysique = saisieInt("Valeur attaque physique : ");
 		int attDistance = saisieInt("Valeur attaque distance : ");
-		int defMagique = saisieInt("Valeur défense magique : ");
-		int defPhysique = saisieInt("Valeur défense physique : ");
-		int defDistance = saisieInt("Valeur défense distance : ");
+		int defMagique = saisieInt("Valeur dï¿½fense magique : ");
+		int defPhysique = saisieInt("Valeur dï¿½fense physique : ");
+		int defDistance = saisieInt("Valeur dï¿½fense distance : ");
 		String metier = saisieString("Metier\n >>");
-		Personnage p = new Personnage(nom, description, niveau, Classe.valueOf(classe), pvMax, esquive, vitesse, paMax, pmMax, attMagique, attPhysique, attDistance, defMagique, defPhysique, defDistance, defDistance, Metier.valueOf(metier), );
-		daoVivant.update(p);
+//		Personnage p = new Personnage(nom, description, niveau, Classe.valueOf(classe), pvMax, esquive, vitesse, paMax, pmMax, attMagique, attPhysique, attDistance, defMagique, defPhysique, defDistance, defDistance, Metier.valueOf(metier), );
+//		daoVivant.update(p);
 
 	}
 
 	private static void afficherPerso(){
 		List <Vivant> listvivants = daoVivant.findAll();
-		if(listvivants.isEmpty()) {System.out.println("Aucun personnages à afficher");}
+		if(listvivants.isEmpty()) {System.out.println("Aucun personnages ï¿½ afficher");}
 		for (Vivant v : listvivants){
 			System.out.println(v);
 		}
@@ -310,7 +322,7 @@ public class App {
 
 	private static void suppprimerPerso(){
 		afficherPerso();
-		int id = saisieInt("Personnage à supprimer ? (id)");
+		int id = saisieInt("Personnage ï¿½ supprimer ? (id)");
 		daoVivant.delete(id);
 
 	}
@@ -408,7 +420,7 @@ public class App {
 		
 
 
-		System.out.println("Attaque créee");
+		System.out.println("Attaque crï¿½ee");
 
 	}
 
@@ -440,7 +452,7 @@ public class App {
 
 	private static void afficherAttaque() {
 		List <Attaque> listattaques = daoAttaque.findAll();
-		if(listattaques.isEmpty()) {System.out.println("Aucune attaque à afficher");}
+		if(listattaques.isEmpty()) {System.out.println("Aucune attaque ï¿½ afficher");}
 		for (Attaque a : listattaques){
 			System.out.println(a);
 		}
@@ -449,7 +461,7 @@ public class App {
 
 	private static void supprimerAttaque() {
 		afficherAttaque();
-		int id = saisieInt("Attaque à supprimer ? (id)");
+		int id = saisieInt("Attaque ï¿½ supprimer ? (id)");
 		daoAttaque.delete(id);
 	}
 

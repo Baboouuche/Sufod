@@ -1,6 +1,5 @@
 package entity;
 
-import java.io.Serializable;
 import java.util.Objects;
 
 import javax.persistence.DiscriminatorColumn;
@@ -27,7 +26,7 @@ public abstract class Item {
 
 	}
 
-	public Item(String libelle, Integer id,String description,double dropChance) {
+	public Item(String libelle, Integer id, String description, double dropChance) {
 		this.libelle = libelle;
 		this.id = id;
 	}

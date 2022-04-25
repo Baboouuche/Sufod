@@ -1,3 +1,4 @@
+				"\n PA : " + coutPA + ", PM : " + coutPM +
 package entity;
 
 import java.io.Serializable;
