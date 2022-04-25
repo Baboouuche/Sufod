@@ -1,20 +1,27 @@
 package entity;
 
 import java.io.Serializable;
+import java.util.Objects;
 
+
+
+@Entity
+@SequenceGenerator(name = "seqAttaque", sequenceName = "seq_attaque", allocationSize = 1, initialValue = 10)
 public class Attaque implements Serializable {
 
 
 	/*----------- Attributs -----------*/	
-
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqAttaque")
 	private Integer id;
 
 	private String nom;
 	private String description;
 
 	private int niveau;
-
+	@Enumerated(EnumType.STRING)
 	private TypeCible typeCible;
+	@Enumerated(EnumType.STRING)
 	private TypeAtt typeAtt;
 
 	private int degatMagique;
@@ -219,29 +226,28 @@ public class Attaque implements Serializable {
 	public void getMalusPM(int malusPM) {
 		this.effetPM = malusPM;
 	}
-
-
-	/*----------- To String -----------*/
-
+	
+	
+	/*----------- hashCode -----------*/
 	@Override
-	public String toString() {
-		return "Attaque [id=" + id + ", nom=" + nom + ", description=" + description + ", niveau=" + niveau
-				+ ", typeCible=" + typeCible + ", typeAtt=" + typeAtt + ", degatMagique=" + degatMagique
-				+ ", degatPhysique=" + degatPhysique + ", degatDistance=" + degatDistance + ", chanceTouch="
-				+ chanceTouch + ", chanceCritique=" + chanceCritique + ", multiplCritique=" + multiplCritique
-				+ ", coutPA=" + coutPA + ", coutPM=" + coutPM + ", malusPA=" + effetPA + ", malusPM=" + effetPM + "]";
+	public int hashCode() {
+		return Objects.hash(id);
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Attaque other = (Attaque) obj;
+		return Objects.equals(id, other.id);
 	}
 
 
-	public String toStringInForm() {
-		return "Attaque n�" + id + " (niveau "+ niveau+") : " + nom + 
-				"\n Description : " + description +
-				"\n Cible : " + typeCible + " | Attaque : " + typeAtt +
-				"\n PA : " + coutPA + ", PM : " + coutPM +
-				"\n Degat Magique : " + degatMagique	+ " | Degat Physique=" + degatPhysique + " | Degat Distance=" + degatDistance + 
-				"\n Pr�cision : "+ chanceTouch + "% | Critique=" + chanceCritique + 
-				"\n Effet PA : " + effetPA + " | Effet PM : =" + effetPM +
-				"\n";
-	}
+	
+
+	
 
 }
