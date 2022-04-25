@@ -43,8 +43,7 @@ public class Attaque implements Serializable {
 	private int effetPM;
 	
 	
-	@ManyToMany(mappedBy = "attaque")
-	private Set<Vivant> vivants;
+
 
 	/*----------- Constrictors -----------*/
 	
