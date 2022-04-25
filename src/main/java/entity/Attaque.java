@@ -1,4 +1,4 @@
-package model;
+package entity;
 
 import java.io.Serializable;
 
@@ -234,12 +234,12 @@ public class Attaque implements Serializable {
 
 
 	public String toStringInForm() {
-		return "Attaque n°" + id + " (niveau "+ niveau+") : " + nom + 
+		return "Attaque nï¿½" + id + " (niveau "+ niveau+") : " + nom + 
 				"\n Description : " + description +
 				"\n Cible : " + typeCible + " | Attaque : " + typeAtt +
 				"\n PA : " + coutPA + ", PM : " + coutPM +
 				"\n Degat Magique : " + degatMagique	+ " | Degat Physique=" + degatPhysique + " | Degat Distance=" + degatDistance + 
-				"\n Précision : "+ chanceTouch + "% | Critique=" + chanceCritique + 
+				"\n Prï¿½cision : "+ chanceTouch + "% | Critique=" + chanceCritique + 
 				"\n Effet PA : " + effetPA + " | Effet PM : =" + effetPM +
 				"\n";
 	}

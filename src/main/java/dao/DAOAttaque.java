@@ -8,11 +8,9 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-
-
-import model.Attaque;
-import model.TypeAtt;
-import model.TypeCible;
+import entity.Attaque;
+import entity.TypeAtt;
+import entity.TypeCible;
 
 public class DAOAttaque implements IDAO<Attaque,Integer>{
 
