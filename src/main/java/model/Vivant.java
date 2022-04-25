@@ -1,18 +1,36 @@
 package model;
 
 import java.util.List;
+import java.util.Objects;
 
-public class Vivant {
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.ForeignKey;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.MappedSuperclass;
+import javax.persistence.SequenceGenerator;
+
+
+
+@MappedSuperclass
+public abstract class Vivant {
 	
 	
 	/*----------- Attributs -----------*/
-	
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq")
+	@SequenceGenerator(name = "seq", sequenceName = "seq_vivant", initialValue = 1, allocationSize = 1)
 	protected int id;
 	protected String nom;
 	protected String description;
 	
 	protected int niveau;
 	
+	@Enumerated(EnumType.ORDINAL)
 	protected Classe classe;
 	
 	protected int pvMax;
@@ -34,42 +52,21 @@ public class Vivant {
 	protected int defPhysique;
 	protected int defDistance;
 	
+	@ManyToMany
+	@JoinTable(name = "attaque", joinColumns = @JoinColumn(name = "vivant_id", foreignKey = @ForeignKey(name = "ATTAQUE_VIVANT_ID_FK")), inverseJoinColumns = @JoinColumn(name = "attaque_id", foreignKey = @ForeignKey(name = "ATTAQUE_ATTAQUE_ID_FK")))
 	protected List<Attaque> attaques;
 	
 
 	/*----------- Constrictors -----------*/
 	
-	public Vivant(int id, String nom, String description, int niveau, Classe classe, int pvMax, int esquive,
-			int vitesse, int paMax, int pmMax, int attMagique, int attPhysique, int attDistance, int defMagique,
-			int defPhysique, int defDistance, List<Attaque> attaques) {
 	
-		this.id = id;
+	
+	public Vivant() {
+	
 		
-		this.nom = nom;
-		this.description = description;
-		
-		this.niveau = niveau;
-		
-		this.classe = classe;
-		
-		this.pvMax = pvMax;
-		
-		this.esquive = esquive;
-		this.vitesse = vitesse;
-		
-		this.paMax = paMax;
-		this.pmMax = pmMax;
-		
-		this.attMagique = attMagique;
-		this.attPhysique = attPhysique;
-		this.attDistance = attDistance;
-		
-		this.defMagique = defMagique;
-		this.defPhysique = defPhysique;
-		this.defDistance = defDistance;
-		
-		this.attaques = attaques;
 	}
+
+	
 
 	public Vivant(int id, String nom, String description, int niveau, Classe classe, int pvMax, int esquive,
 			int vitesse, int paMax, int pmMax, int attMagique, int attPhysique, int attDistance, int defMagique,
@@ -331,15 +328,21 @@ public class Vivant {
 	}
 
 	
-	/*----------- To String -----------*/
-	
 	@Override
-	public String toString() {
-		return "Vivant [id=" + id + ", nom=" + nom + ", description=" + description + ", niveau=" + niveau + ", classe="
-				+ classe + ", pvMax=" + pvMax + ", esquive=" + esquive + ", vitesse=" + vitesse + ", paMax=" + paMax
-				+ ", pmMax=" + pmMax + ", attMagique=" + attMagique + ", attPhysique=" + attPhysique + ", attDistance="
-				+ attDistance + ", defMagique=" + defMagique + ", defPhysique=" + defPhysique + ", defDistance="
-				+ defDistance + ", attaques=" + attaques + "]";
+	public int hashCode() {
+		return Objects.hash(id);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Vivant other = (Vivant) obj;
+		return id == other.id;
 	}
 	
 	
