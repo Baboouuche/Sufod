@@ -1,26 +1,48 @@
 package entity;
 
-import java.util.List;
+import java.util.Objects;
+import java.util.Set;
 
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
+import javax.persistence.OneToMany;
+
+@MappedSuperclass
 public class Compte {
 
 	
 /*----------- Attributs -----------*/
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqPersonne")
+	@Column(name = "id")
+	private Long id;
 	
-	protected int id; 
+	@Column(name = "first_name", nullable = false, length = 200)
+	private String prenom;
+	@Column(name = "last_name")
+	private String nom;
 	
-	protected String nom;
-	protected String prenom;
+	@Column(name = "mail", unique = true)
+	private String mail;
 	
-	protected String mail;
+	@Column(name = "surname")
+	private String pseudo;
 	
-	protected String pseudo;
-	
-	List<Personnage> personnages;
+	@OneToMany(mappedBy = "key.compte")
+	private Set<Personnage> personnages;
 
 	
 /*----------- Constrictors -----------*/
-	public Compte(int id, String nom, String prenom, String mail, String pseudo, List<Personnage> personnages) {
+	
+	
+	public Compte() {
+	}
+	
+	
+	public Compte(Long id, String nom, String prenom, String mail, String pseudo, Set<Personnage> personnages) {
 		
 		this.id = id;
 		
@@ -35,7 +57,7 @@ public class Compte {
 	}
 	
 	
-public Compte(int id, String nom, String prenom, String mail, String pseudo) {
+public Compte(Long id, String nom, String prenom, String mail, String pseudo) {
 		
 		this.id = id;
 		
@@ -90,49 +112,54 @@ public Compte(int id, String nom, String prenom, String mail, String pseudo) {
 	}
 
 
-	public List<Personnage> getJoueurs() {
+	public Set<Personnage> getJoueurs() {
 		return personnages;
 	}
 
 
-	public void setJoueurs(List<Personnage> personnages) {
+	public void setJoueurs(Set<Personnage> personnages) {
 		this.personnages = personnages;
 	}
 
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 	
 	
-	public List<Personnage> getPersonnages() {
+	public Set<Personnage> getPersonnages() {
 		return personnages;
 	}
 
 
-	public void setPersonnages(List<Personnage> personnages) {
+	public void setPersonnages(Set<Personnage> personnages) {
 		this.personnages = personnages;
 	}
 
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
 
-	/*----------- To String -----------*/
+	/*----------- hashCode & equals -----------*/
+	
 	@Override
-	public String toString() {
-		return "Compte [id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", pseudo=" + pseudo + ", personnages ="
-				+ personnages + "]";
-	}	
-	
-	public String toStringInForm() {
-		return "Compte n�" + id + 
-				"\n Propri�taire : " + nom + " " + prenom +
-				"\n Mail : " + mail +
-				"\n Pseudo=" + pseudo;
+	public int hashCode() {
+		return Objects.hash(id);
 	}
-	
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Compte other = (Compte) obj;
+		return Objects.equals(id, other.id);
+	}
 
 }
