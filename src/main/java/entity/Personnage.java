@@ -1,15 +1,20 @@
 package entity;
 
-import java.util.List;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 
+import javax.persistence.Table;
+@Entity
+@Table(name = "personnage")
 public class Personnage extends Vivant{
 	
 	/*----------- Attributs -----------*/
-	
+
 	private int idCompte;
 	
 	protected int pc;
-	
+	@Enumerated(EnumType.ORDINAL)
 	protected Metier metier;
 	
 	protected int equipTete;
@@ -25,6 +30,11 @@ public class Personnage extends Vivant{
 
 	
 	/*----------- Constrictors -----------*/	
+	
+	public Personnage () {
+		
+		
+	}
 	public Personnage(int id, String nom, String description, int niveau, Classe classe, int pvMax, int esquive,
 			int vitesse, int paMax, int pmMax, int attMagique, int attPhysique, int attDistance, int defMagique,
 			int defPhysique, int defDistance, int pc, Metier metier,int idCompte) {
@@ -174,31 +184,10 @@ public class Personnage extends Vivant{
 	
 
 
-	/*----------- To String -----------*/
+
 	
 
 
-
-	@Override
-	public String toString() {
-		return "Personnage [idCompte=" + idCompte + ", pc=" + pc + ", metier=" + metier + ", equipTete=" + equipTete
-				+ ", equipPlastron=" + equipPlastron + ", equipCou=" + equipCou + ", equipMain=" + equipMain
-				+ ", equipPoignet=" + equipPoignet + ", equipPied=" + equipPied + ", equipJambe=" + equipJambe
-				+ ", equipBras=" + equipBras + "]";
-	}
-	
-	
-	
-	public String toStringInForm() {
-		return "Personnage : " + nom + " | Niveau : " + super.niveau + " | Classe : " + super.classe + " | Metier : " + metier +
-				"\n Description : " + description +
-				"\n PV : " + super.pvMax + " | PA : " + super.paMax + " | PM : " + super.pmMax + 
-				"\n Attaque ==> Magique : " + super.attMagique + " | Physique : " + super.attPhysique + " | Distance : " + super.attDistance +
-				"\n Defence ==> Magique : " + super.defMagique + " | Physique : " + super.defPhysique + " | Distance : " + super.defDistance +
-				"\n Tete : " + equipTete + " | Plastron : "	+ equipPlastron + " | Jambe : " + equipJambe +
-				"\n Cou : " + equipCou + " | Main : " + equipMain + " | Poignet : " + equipPoignet + 
-				"\n Pied=" + equipPied  + " | Bras=" + equipBras;
-	}
 
 	
 }

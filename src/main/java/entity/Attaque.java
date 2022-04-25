@@ -1,6 +1,11 @@
 package entity;
 
 import java.io.Serializable;
+import java.util.Set;
+
+import javax.persistence.ManyToMany;
+
+
 
 public class Attaque implements Serializable {
 
@@ -32,8 +37,17 @@ public class Attaque implements Serializable {
 
 	private int effetPA;
 	private int effetPM;
+	
+	
+	@ManyToMany(mappedBy = "attaque")
+	private Set<Vivant> vivants;
 
 	/*----------- Constrictors -----------*/
+	
+	
+	public Attaque() {
+		
+	}
 
 	public Attaque(int id, String nom, String description, int niveau, 
 			TypeCible typeCible, TypeAtt typeAtt, 

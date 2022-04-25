@@ -2,6 +2,7 @@ package entity;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -55,7 +56,7 @@ public abstract class Vivant {
 	
 	@ManyToMany
 	@JoinTable(name = "attaque", joinColumns = @JoinColumn(name = "vivant_id", foreignKey = @ForeignKey(name = "ATTAQUE_VIVANT_ID_FK")), inverseJoinColumns = @JoinColumn(name = "attaque_id", foreignKey = @ForeignKey(name = "ATTAQUE_ATTAQUE_ID_FK")))
-	protected List<Attaque> attaques;
+	protected Set<Attaque> attaques;
 	
 
 	/*----------- Constrictors -----------*/
