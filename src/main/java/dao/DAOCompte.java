@@ -7,11 +7,11 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-import java.sql.Statement;
+import entity.Admin;
+import entity.Compte;
+import entity.Joueur;
 
-import model.Admin;
-import model.Compte;
-import model.Joueur;
+import java.sql.Statement;
 
 
 public class DAOCompte implements IDAO<Compte,Integer> {

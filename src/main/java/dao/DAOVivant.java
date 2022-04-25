@@ -7,9 +7,9 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-import java.sql.Statement;
+import entity.*;
 
-import model.*;
+import java.sql.Statement;
 
 public class DAOVivant  implements IDAO<Vivant,Integer>  {
 

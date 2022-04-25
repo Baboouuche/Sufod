@@ -1,4 +1,4 @@
-package model;
+package entity;
 
 import java.util.List;
 
@@ -128,8 +128,8 @@ public Compte(int id, String nom, String prenom, String mail, String pseudo) {
 	}	
 	
 	public String toStringInForm() {
-		return "Compte n°" + id + 
-				"\n Propriétaire : " + nom + " " + prenom +
+		return "Compte nï¿½" + id + 
+				"\n Propriï¿½taire : " + nom + " " + prenom +
 				"\n Mail : " + mail +
 				"\n Pseudo=" + pseudo;
 	}
