@@ -1,6 +1,11 @@
 package model;
 
 import java.util.List;
+import java.util.Set;
+
+
+@Entity
+@Table(name="monstre")
 
 public class Monstre extends Vivant{
 
@@ -8,27 +13,30 @@ public class Monstre extends Vivant{
 	private int minDrop;
 	private int maxDrop;
 	
-	private List<Drop> drops;
-
+	
+	@OneToMany(mappedBy = "key.monstre")
+	private Set<Drop> drops;
+	
+	@OneToMAny(mappedBy = "monstre")
+	private Set<Attaque> pokemons;
+	
+	
+	
 	
 	/*----------- Constrictors -----------*/	
 	
-	public Monstre(int id, String nom, String description, int niveau, Classe classe, int pvMax, int esquive,
-			int vitesse, int paMax, int pmMax, int attMagique, int attPhysique, int attDistance, int defMagique,
-			int defPhysique, int defDistance, int minDrop, int maxDrop) {
-		
-		super(id, nom, description, niveau, classe, pvMax, esquive, vitesse, paMax, pmMax, attMagique, attPhysique,
-				attDistance, defMagique, defPhysique, defDistance);
-		
-		this.minDrop = minDrop;
-		this.maxDrop = maxDrop;
+	public Monstre(){
 	}
 
 
 	/*----------- Getters & Setters -----------*/
+
+
 	public int getMinDrop() {
 		return minDrop;
 	}
+
+
 
 
 	public void setMinDrop(int minDrop) {
@@ -36,9 +44,13 @@ public class Monstre extends Vivant{
 	}
 
 
+
+
 	public int getMaxDrop() {
 		return maxDrop;
 	}
+
+
 
 
 	public void setMaxDrop(int maxDrop) {
@@ -46,33 +58,35 @@ public class Monstre extends Vivant{
 	}
 
 
-	public List<Drop> getDrops() {
+
+
+	public Set<Drop> getDrops() {
 		return drops;
 	}
 
 
-	public void setDrops(List<Drop> drops) {
+
+
+	public void setDrops(Set<Drop> drops) {
 		this.drops = drops;
 	}
-	
-	
-	/*----------- To String -----------*/
 
-	
-	@Override
-	public String toString() {
-		return "Monstre [minDrop=" + minDrop + ", maxDrop=" + maxDrop + ", drops=" + drops + "]";
+
+
+
+	public Set<Attaque> getPokemons() {
+		return pokemons;
 	}
-	
-	
-	
-	public String toStringInForm() {
-		return "Monstre : " + nom + " | Niveau : " + super.niveau + " | Classe : " + super.classe +
-				"\n Description : " + description +
-				"\n PV : " + super.pvMax + " | PA : " + super.paMax + " | PM : " + super.pmMax + 
-				"\n Attaque ==> Magique : " + super.attMagique + " | Physique : " + super.attPhysique + " | Distance : " + super.attDistance +
-				"\n Defence ==> Magique : " + super.defMagique + " | Physique : " + super.defPhysique + " | Distance : " + super.defDistance;
+
+
+
+
+	public void setPokemons(Set<Attaque> pokemons) {
+		this.pokemons = pokemons;
 	}
+
+
+
 
 
 
