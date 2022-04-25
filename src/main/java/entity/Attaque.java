@@ -2,19 +2,21 @@ package entity;
 
 import java.io.Serializable;
 import java.util.Objects;
+import java.util.Set;
 
 
 
 @Entity
 @SequenceGenerator(name = "seqAttaque", sequenceName = "seq_attaque", allocationSize = 1, initialValue = 10)
 public class Attaque implements Serializable {
-
-
+	
+	@ManyToMany(mappedBy = "attaque")
+	private Set<Vivant> vivant;
 	/*----------- Attributs -----------*/	
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqAttaque")
 	private Integer id;
-
+	
 	private String nom;
 	private String description;
 
