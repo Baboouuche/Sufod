@@ -41,8 +41,17 @@ public class Attaque implements Serializable {
 
 	private int effetPA;
 	private int effetPM;
+	
+	
+	@ManyToMany(mappedBy = "attaque")
+	private Set<Vivant> vivants;
 
 	/*----------- Constrictors -----------*/
+	
+	
+	public Attaque() {
+		
+	}
 
 	public Attaque(int id, String nom, String description, int niveau, 
 			TypeCible typeCible, TypeAtt typeAtt, 
