@@ -10,8 +10,8 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.MappedSuperclass;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 
 
@@ -54,8 +54,7 @@ public abstract class Vivant {
 	
 	//@ManyToMany
 	//@JoinTable(name = "attaque", joinColumns = @JoinColumn(name = "vivant_id", foreignKey = @ForeignKey(name = "ATTAQUE_VIVANT_ID_FK")), inverseJoinColumns = @JoinColumn(name = "attaque_id", foreignKey = @ForeignKey(name = "ATTAQUE_ATTAQUE_ID_FK")))
-	@ManyToMany(mappedBy ="key.vivant")
-	protected Set<Move> moveSet;
+
 	
 
 	/*----------- Constrictors -----------*/
