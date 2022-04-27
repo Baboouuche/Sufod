@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.OneToMany;
+import javax.persistence.Version;
 
 @MappedSuperclass
 public class Compte {
@@ -33,40 +34,19 @@ public class Compte {
 	
 	@OneToMany(mappedBy = "key.compte")
 	private Set<Personnage> personnages;
+	
+	@Version
+	long version;
 
 	
-/*----------- Constrictors -----------*/
-	
+/*----------- Constructors -----------*/
 	
 	public Compte() {
 	}
 	
 	
-	public Compte(Long id, String nom, String prenom, String mail, String pseudo, Set<Personnage> personnages) {
-		
+	public Compte(Long id) {
 		this.id = id;
-		
-		this.nom = nom;
-		this.prenom = prenom;
-		
-		this.mail = mail;
-		
-		this.pseudo = pseudo;
-		
-		this.personnages = personnages;
-	}
-	
-	
-public Compte(Long id, String nom, String prenom, String mail, String pseudo) {
-		
-		this.id = id;
-		
-		this.nom = nom;
-		this.prenom = prenom;
-		
-		this.mail = mail;
-		
-		this.pseudo = pseudo;
 	}
 
 
@@ -140,13 +120,22 @@ public Compte(Long id, String nom, String prenom, String mail, String pseudo) {
 	public void setId(Long id) {
 		this.id = id;
 	}
+		
+	public long getVersion() {
+		return version;
+	}
 
+	public void setVersion(long version) {
+		this.version = version;
+	}
 
-	/*----------- hashCode & equals -----------*/
 	
+	
+	/*----------- hashCode & equals -----------*/
+
 	@Override
 	public int hashCode() {
-		return Objects.hash(id);
+		return Objects.hash(id, version);
 	}
 
 
@@ -159,7 +148,7 @@ public Compte(Long id, String nom, String prenom, String mail, String pseudo) {
 		if (getClass() != obj.getClass())
 			return false;
 		Compte other = (Compte) obj;
-		return Objects.equals(id, other.id);
-	}
+		return Objects.equals(id, other.id) && version == other.version;
+	}	
 
 }
