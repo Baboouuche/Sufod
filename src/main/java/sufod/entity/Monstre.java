@@ -2,22 +2,28 @@ package sufod.entity;
 
 import java.util.Set;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+
 
 @Entity
 @Table(name="monstre")
-
+@SequenceGenerator(name = "seqMonstre", sequenceName = "seq_monstre", initialValue = 10, allocationSize = 1)
 public class Monstre extends Vivant{
-
+	
+	//@Id
+	//@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqMonstre")
 	/*----------- Attributs -----------*/
 	private int minDrop;
 	private int maxDrop;
 	
-	
-	@OneToMany(mappedBy = "key.monstre")
-	private Set<Drop> drops;
-	
-	@OneToMAny(mappedBy = "monstre")
-	private Set<Attaque> pokemons;
+	@OneToMany(mappedBy="key.monstre")
+	private Set<Move> moveSet;
 	
 	
 	
@@ -57,38 +63,5 @@ public class Monstre extends Vivant{
 	}
 
 
-
-
-	public Set<Drop> getDrops() {
-		return drops;
-	}
-
-
-
-
-	public void setDrops(Set<Drop> drops) {
-		this.drops = drops;
-	}
-
-
-
-
-	public Set<Attaque> getPokemons() {
-		return pokemons;
-	}
-
-
-
-
-	public void setPokemons(Set<Attaque> pokemons) {
-		this.pokemons = pokemons;
-	}
-
-
-
-
-
-
-	
 	
 }

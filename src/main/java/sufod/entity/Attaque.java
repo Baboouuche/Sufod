@@ -1,249 +1,105 @@
-				"\n PA : " + coutPA + ", PM : " + coutPM +
+
 package sufod.entity;
+
 
 import java.io.Serializable;
 import java.util.Objects;
-import java.util.Set;
 
-
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 
 @Entity
 @SequenceGenerator(name = "seqAttaque", sequenceName = "seq_attaque", allocationSize = 1, initialValue = 10)
-public class Attaque implements Serializable {
-	
-	@ManyToMany(mappedBy = "attaque")
-	private Set<Vivant> vivant;
-	/*----------- Attributs -----------*/	
+public class Attaque {
+	private String nom;
+	private int degats;
+	private int paBase;
+	private int precision;
+	@Enumerated(EnumType.STRING)
+	private TypeAtt type;
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqAttaque")
 	private Integer id;
-	
-	private String nom;
-	private String description;
 
-	private int niveau;
-	@Enumerated(EnumType.STRING)
-	private TypeCible typeCible;
-	@Enumerated(EnumType.STRING)
-	private TypeAtt typeAtt;
-
-	private int degatMagique;
-	private int degatPhysique;
-	private int degatDistance;
-
-
-	private double chanceTouch;
-	private double chanceCritique;
-
-	private double multiplCritique;
-
-	private int coutPA;
-	private int coutPM;
-
-	private int effetPA;
-	private int effetPM;
-	
-	
-
-
-	/*----------- Constrictors -----------*/
-	
-	
 	public Attaque() {
-		
+
 	}
 
-	public Attaque(int id, String nom, String description, int niveau, 
-			TypeCible typeCible, TypeAtt typeAtt, 
-			int degatMagique, int degatPhysique, int degatDistance, 
-			double chanceTouch, double chanceCritique,
-			int coutPA, int coutPM, int malusPA, int malusPM ) {
-
-		this.id = id;				
+	public Attaque(TypeAtt type, String nom, int degats, int paBase, int precision) {
 		this.nom = nom;
-		this.description = description;
-
-		this.niveau = niveau;
-
-		this.typeCible = typeCible;
-		this.typeAtt = typeAtt;
-
-		this.degatMagique = degatMagique;
-		this.degatPhysique = degatPhysique;
-		this.degatDistance = degatDistance;
-
-		this.chanceTouch = chanceTouch;
-		this.chanceCritique = chanceCritique;
-		this.multiplCritique = 1;
-
-		this.coutPA = coutPA;
-		this.coutPM = coutPM;
-
-		this.effetPA = malusPA;
-		this.effetPM = malusPM;
-	}
-	public Attaque(String nom, String description, int niveau, 
-			TypeCible typeCible, TypeAtt typeAtt, 
-			int degatMagique, int degatPhysique, int degatDistance, 
-			double chanceTouch, double chanceCritique,
-			int coutPA, int coutPM, int malusPA, int malusPM ) {
-
-		this.id = id;				
-		this.nom = nom;
-		this.description = description;
-
-		this.niveau = niveau;
-
-		this.typeCible = typeCible;
-		this.typeAtt = typeAtt;
-
-		this.degatMagique = degatMagique;
-		this.degatPhysique = degatPhysique;
-		this.degatDistance = degatDistance;
-
-		this.chanceTouch = chanceTouch;
-		this.chanceCritique = chanceCritique;
-		this.multiplCritique = 1;
-
-		this.coutPA = coutPA;
-		this.coutPM = coutPM;
-
-		this.effetPA = malusPA;
-		this.effetPM = malusPM;
+		this.degats = degats;
+		this.paBase = paBase;
+		this.precision = precision;
+		this.type = type;
 	}
 
-
-
-	/*----------- Getters & Setters -----------*/
-
-	public Integer getId(){
-		return id;
-	}
-
-	public void setId(int id) {
+	public Attaque(Integer id, String nom, int degats, int paBase, int precision, TypeAtt type) {
 		this.id = id;
+		this.nom = nom;
+		this.degats = degats;
+		this.paBase = paBase;
+		this.precision = precision;
+		this.type = type;
 	}
-
 
 	public String getNom() {
 		return nom;
-	}	
-
-	public String getDesription() {
-		return description;
 	}
 
-
-
-	public int getNiveau() {
-		return niveau;
+	public void setNom(String nom) {
+		this.nom = nom;
 	}
 
-	public void setNiveau(int niveau) {
-		this.niveau = niveau;
+	public int getDegats() {
+		return degats;
 	}
 
-
-
-	public TypeAtt getTypeAtt() {
-		return typeAtt;
+	public void setDegats(int degats) {
+		this.degats = degats;
 	}
 
-
-	public TypeCible getTypeCible() {
-		return typeCible;
+	public int getPaBase() {
+		return paBase;
 	}
 
-
-	public int getDegatMagique() {
-		return degatMagique;
+	public void setPaBase(int paBase) {
+		this.paBase = paBase;
 	}
 
-
-	public void setDegatMagique(int degatMagique) {
-		this.degatMagique = degatMagique;
+	public int getPrecision() {
+		return precision;
 	}
 
-	public int getDegatPhysique() {
-		return degatPhysique;
+	public void setPrecision(int precision) {
+		this.precision = precision;
 	}
 
-	public void setDegatPhysique(int degatPhysique) {
-		this.degatPhysique = degatPhysique;
+	public TypeAtt getType() {
+		return type;
 	}
 
-
-	public int getDegatDistance() {
-		return degatDistance;
+	public void setType(TypeAtt type) {
+		this.type = type;
 	}
 
-	public void setDegatDistance(int degatDistance) {
-		this.degatDistance = degatDistance;
+	public Integer getId() {
+		return id;
 	}
 
-	public double getChanceTouch() {
-		return chanceTouch;
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
-	public void setChanceTouch(double chanceTouch) {
-		this.chanceTouch = chanceTouch;
-	}
-
-	public double getChanceCritique() {
-		return chanceCritique;
-	}
-
-	public void setChanceCritique(double chanceCritique) {
-		this.chanceCritique = chanceCritique;
-	}
-
-	public double getMultiplCritique() {
-		return multiplCritique;
-	}
-
-	public void setMultiplCritique(double multiplCritique) {
-		this.multiplCritique = multiplCritique;
-	}
-
-
-	public int getCoutPA() {
-		return coutPA;
-	}
-
-	public void setCoutPA(int coutPA) {
-		this.coutPA = coutPA;
-	}
-
-	public int getCoutPM() {
-		return coutPM;
-	}
-
-	public void setCoutPM(int coutPM) {
-		this.coutPM = coutPM;
-	}
-
-	public int getMalusPA() {
-		return effetPA;
-	}
-
-	public void setMalusPA(int malusPA) {
-		this.effetPA = malusPA;
-	}
-
-	public int getMalusPM() {
-		return effetPM;
-	}
-
-	public void getMalusPM(int malusPM) {
-		this.effetPM = malusPM;
-	}
-	
-	
-	/*----------- hashCode -----------*/
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -255,10 +111,5 @@ public class Attaque implements Serializable {
 		Attaque other = (Attaque) obj;
 		return Objects.equals(id, other.id);
 	}
-
-
-	
-
-	
 
 }

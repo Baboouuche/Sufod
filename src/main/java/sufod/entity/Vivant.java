@@ -7,12 +7,9 @@ import java.util.Set;
 
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.SequenceGenerator;
@@ -55,9 +52,10 @@ public abstract class Vivant {
 	protected int defPhysique;
 	protected int defDistance;
 	
-	@ManyToMany
-	@JoinTable(name = "attaque", joinColumns = @JoinColumn(name = "vivant_id", foreignKey = @ForeignKey(name = "ATTAQUE_VIVANT_ID_FK")), inverseJoinColumns = @JoinColumn(name = "attaque_id", foreignKey = @ForeignKey(name = "ATTAQUE_ATTAQUE_ID_FK")))
-	protected Set<Attaque> attaques;
+	//@ManyToMany
+	//@JoinTable(name = "attaque", joinColumns = @JoinColumn(name = "vivant_id", foreignKey = @ForeignKey(name = "ATTAQUE_VIVANT_ID_FK")), inverseJoinColumns = @JoinColumn(name = "attaque_id", foreignKey = @ForeignKey(name = "ATTAQUE_ATTAQUE_ID_FK")))
+	@ManyToMany(mappedBy ="key.vivant")
+	protected Set<Move> moveSet;
 	
 
 	/*----------- Constrictors -----------*/
@@ -65,7 +63,6 @@ public abstract class Vivant {
 	
 	
 	public Vivant() {
-	
 		
 	}
 
