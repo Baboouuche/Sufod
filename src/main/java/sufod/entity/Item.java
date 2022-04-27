@@ -18,7 +18,7 @@ public abstract class Item {
 	protected String libelle;
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Id
-	protected Integer id;
+	protected Long id;
 	protected String description;
 	protected double dropChance;
 
@@ -26,7 +26,7 @@ public abstract class Item {
 
 	}
 
-	public Item(String libelle, Integer id, String description, double dropChance) {
+	public Item(String libelle, Long id, String description, double dropChance) {
 		this.libelle = libelle;
 		this.id = id;
 	}
@@ -35,11 +35,11 @@ public abstract class Item {
 		this.libelle = libelle;
 	}
 
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

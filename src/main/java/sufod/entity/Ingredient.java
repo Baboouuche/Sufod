@@ -7,9 +7,18 @@ import javax.persistence.Entity;
 @DiscriminatorValue("i")
 public class Ingredient extends Item {
 
-	
 	public Ingredient() {
-
+		super();
 	}
 
+	@Override
+	public Long getId() {
+		return super.getId();
+	}
+
+	@Override
+	public void setId(Long id) {
+		super.setId(id);
+	}
+	
 }

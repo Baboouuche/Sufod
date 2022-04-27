@@ -1,5 +1,10 @@
 package sufod.entity;
 
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+
+@Entity
+@DiscriminatorValue("e")
 public class Equipement extends Item {
 
 		private int pv;

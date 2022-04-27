@@ -16,11 +16,7 @@ public class Admin extends Compte {
 	public Admin() {
 	}
 	
-	public Admin(Long id, String nom, String prenom, String mail, String pseudo, Set<Personnage> personnages) {
-		super(id, nom, prenom, mail, pseudo, personnages);
-	}
-	
-	public Admin(Long id, String nom, String prenom, String mail, String pseudo) {
-		super(id, nom, prenom, mail, pseudo);
+	public Admin(Long id) {
+		super(id);
 	}
 }

@@ -12,12 +12,13 @@ import javax.persistence.Table;
 @SequenceGenerator(name = "seqPersonne", sequenceName = "seq_joueur", allocationSize = 1)
 public class Joueur extends Compte{
 
-	public Joueur(Long id, String nom, String prenom, String mail, String pseudo, Set<Personnage> personnages) {
-		super(id, nom, prenom, mail, pseudo, personnages);
+	public Joueur() {
+		super();
 	}
 	
-	public Joueur(Long id, String nom, String prenom, String mail, String pseudo) {
-		super(id, nom, prenom, mail, pseudo);
+	
+	public Joueur(Long id) {
+		super(id);
 	}
 
 }
