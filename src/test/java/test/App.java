@@ -7,17 +7,17 @@ import java.util.Scanner;
 import dao.DAOAttaque;
 import dao.DAOCompte;
 import dao.DAOVivant;
-import entity.Admin;
-import entity.Attaque;
-import entity.Classe;
-import entity.Compte;
-import entity.Joueur;
-import entity.Metier;
-import entity.Monstre;
-import entity.Personnage;
-import entity.TypeAtt;
-import entity.TypeCible;
-import entity.Vivant;
+import sufod.entity.Admin;
+import sufod.entity.Attaque;
+import sufod.entity.Classe;
+import sufod.entity.Compte;
+import sufod.entity.Joueur;
+import sufod.entity.Metier;
+import sufod.entity.Monstre;
+import sufod.entity.Personnage;
+import sufod.entity.TypeAtt;
+import sufod.entity.TypeCible;
+import sufod.entity.Vivant;
 
 
 public class App {

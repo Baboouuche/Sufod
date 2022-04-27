@@ -1,4 +1,4 @@
-package entity;
+package sufod.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.EnumType;

@@ -1,4 +1,4 @@
-package entity;
+package sufod.entity;
 
 import java.util.List;
 import java.util.Set;
@@ -19,6 +19,5 @@ public class Joueur extends Compte{
 	public Joueur(Long id, String nom, String prenom, String mail, String pseudo) {
 		super(id, nom, prenom, mail, pseudo);
 	}
-	
 
 }

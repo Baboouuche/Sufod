@@ -1,4 +1,4 @@
-package entity;
+package sufod.entity;
 
 import java.util.List;
 import java.util.Set;
@@ -23,3 +23,4 @@ public class Admin extends Compte {
 	public Admin(Long id, String nom, String prenom, String mail, String pseudo) {
 		super(id, nom, prenom, mail, pseudo);
 	}
+}

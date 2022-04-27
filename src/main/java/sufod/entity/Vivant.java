@@ -1,5 +1,5 @@
 	
-package entity;
+package sufod.entity;
 
 import java.util.List;
 import java.util.Objects;

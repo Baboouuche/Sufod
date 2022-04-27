@@ -1,4 +1,4 @@
-package entity;
+package sufod.entity;
 
 import java.util.Set;
 

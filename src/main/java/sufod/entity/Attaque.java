@@ -1,5 +1,5 @@
 				"\n PA : " + coutPA + ", PM : " + coutPM +
-package entity;
+package sufod.entity;
 
 import java.io.Serializable;
 import java.util.Objects;

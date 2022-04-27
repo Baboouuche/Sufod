@@ -1,4 +1,4 @@
-package entity;
+package sufod.entity;
 
 public class Drop {
 
