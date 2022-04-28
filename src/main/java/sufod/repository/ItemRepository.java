@@ -20,7 +20,7 @@ public interface ItemRepository extends JpaRepository<Item, Long> {
 	List<Item> findByPersonnage(Personnage id);
 	
 	@Query("select i from Item i left join fetch i.ingredients")
-	Optional<Item> findIngredients(@Param("type") Long id);
+	Optional<Item> findIngredients(@Param("id") Long id);
 	
 	@Query("select i from Item i left join fetch i.equipements")
 	Optional<Item> findEquipements(@Param("id") Long id);
