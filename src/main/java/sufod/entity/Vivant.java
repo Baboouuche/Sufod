@@ -24,7 +24,7 @@ public abstract class Vivant {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq")
 	@SequenceGenerator(name = "seq", sequenceName = "seq_vivant", initialValue = 1, allocationSize = 1)
-	protected int id;
+	protected Integer id;
 	protected String nom;
 	protected String description;
 	
