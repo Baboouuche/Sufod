@@ -55,7 +55,7 @@ public abstract class Vivant {
 	//@ManyToMany
 	//@JoinTable(name = "attaque", joinColumns = @JoinColumn(name = "vivant_id", foreignKey = @ForeignKey(name = "ATTAQUE_VIVANT_ID_FK")), inverseJoinColumns = @JoinColumn(name = "attaque_id", foreignKey = @ForeignKey(name = "ATTAQUE_ATTAQUE_ID_FK")))
 
-	
+	private Set<Move> moveSet;
 
 	/*----------- Constrictors -----------*/
 	
@@ -123,7 +123,6 @@ public abstract class Vivant {
 		this.defPhysique = defPhysique;
 		this.defDistance = defDistance;
 		
-		this.attaques = attaques;
 	}
 	
 	/*----------- Getters & Setters -----------*/
@@ -317,14 +316,7 @@ public abstract class Vivant {
 	}
 
 
-	public List<Attaque> getAttaques() {
-		return attaques;
-	}
-
-
-	public void setAttaques(List<Attaque> attaques) {
-		this.attaques = attaques;
-	}
+	
 
 	
 	@Override
