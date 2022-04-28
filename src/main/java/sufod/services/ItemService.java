@@ -5,6 +5,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import sufod.entity.Equipement;
+import sufod.entity.EquipementKey;
+import sufod.entity.Ingredient;
+import sufod.entity.IngredientKey;
 import sufod.entity.Item;
 import sufod.exception.ItemException;
 import sufod.repository.ItemRepository;
@@ -32,13 +36,16 @@ public class ItemService {
 		return itemRepo.save(item);
 	}
 
-	public void delete(Item item) {
-		delete(item.getId());
-	}
-
 	public void delete(Long id) {
 		Item item = getById(id);
 		itemRepo.delete(item);
+	}
+
+	public Ingredient create(Ingredient ingredient) {
+		if (ingredient.getId() != null) {
+			throw new ItemException("id auto");
+		}
+		return itemRepo.save(ingredient);
 	}
 
 }

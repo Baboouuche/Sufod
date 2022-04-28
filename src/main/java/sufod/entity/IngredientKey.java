@@ -18,7 +18,6 @@ public class IngredientKey implements Serializable {
 	private Item item;
 
 	public IngredientKey() {
-		super();
 	}
 
 	public IngredientKey(Personnage personnage, Item item) {
@@ -42,7 +41,7 @@ public class IngredientKey implements Serializable {
 	public void setItem(Item item) {
 		this.item = item;
 	}
-	
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(personnage, item);

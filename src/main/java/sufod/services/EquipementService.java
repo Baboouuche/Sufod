@@ -5,16 +5,28 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import sufod.entity.Equipement;
 import sufod.entity.Ingredient;
 import sufod.entity.Item;
+import sufod.exception.EquipementException;
 import sufod.exception.IngredientException;
-import sufod.repository.IngredientRepository;
+import sufod.repository.EquipementRepository;
 
 @Service
-public class IngredientService extends ItemService {
+public class EquipementService extends ItemService {
 
 	@Autowired
-	private IngredientRepository ingredientRepo;
+	private EquipementRepository equipementRepo;
+
+	@Override
+	public List<Item> getAll() {
+		return super.getAll();
+	}
+
+	@Override
+	public Item getById(Long id) {
+		return super.getById(id);
+	}
 
 	@Override
 	public Item create(Item item) {
@@ -24,14 +36,6 @@ public class IngredientService extends ItemService {
 	@Override
 	public void delete(Long id) {
 		super.delete(id);
-	}
-
-	@Override
-	public Ingredient create(Ingredient ingredient) {
-		if (ingredient.getKey() != null) {
-			throw new IngredientException("id auto");
-		}
-		return ingredientRepo.save(ingredient);
 	}
 
 }
