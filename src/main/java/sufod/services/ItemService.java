@@ -30,7 +30,7 @@ public class ItemService {
 	}
 
 	public Item create(Item item) {
-		if (item.getId() != null) {
+		if (item.getLibelle() == null) {
 			throw new ItemException("id auto");
 		}
 		return itemRepo.save(item);
@@ -42,7 +42,7 @@ public class ItemService {
 	}
 
 	public Ingredient create(Ingredient ingredient) {
-		if (ingredient.getId() != null) {
+		if (ingredient.getId() == null) {
 			throw new ItemException("id auto");
 		}
 		return itemRepo.save(ingredient);

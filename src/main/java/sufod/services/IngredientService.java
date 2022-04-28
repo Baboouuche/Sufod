@@ -1,7 +1,5 @@
 package sufod.services;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,7 +26,7 @@ public class IngredientService extends ItemService {
 
 	@Override
 	public Ingredient create(Ingredient ingredient) {
-		if (ingredient.getKey() != null) {
+		if (ingredient.getKey() == null) {
 			throw new IngredientException("id auto");
 		}
 		return ingredientRepo.save(ingredient);
