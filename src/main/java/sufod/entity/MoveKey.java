@@ -6,7 +6,6 @@ import java.util.Objects;
 import javax.persistence.Embeddable;
 import javax.persistence.ForeignKey;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
 @Embeddable
@@ -15,23 +14,40 @@ public class MoveKey implements Serializable {
 	@JoinColumn(name = "attaque_id", foreignKey = @ForeignKey(name = "move_attaque_id_fk"))
 	private Attaque attaque;
 	
-	@ManyToMany
-	@JoinColumn(name = "vivant_id", foreignKey = @ForeignKey(name = "move_vivant_id_fk"))
-	private Vivant vivant;
+	@ManyToOne
+	@JoinColumn(name = "monstre_id", foreignKey = @ForeignKey(name = "move_monstre_id_fk"))
+	private Monstre monstre;
 
 	public MoveKey() {
 
 	}
 
-	public MoveKey(Attaque attaque, Vivant vivant) {
+	public MoveKey(Attaque attaque, Monstre monstre) {
 		super();
 		this.attaque = attaque;
-		this.vivant = vivant;
+		this.monstre = monstre;
+	}
+	
+
+	public Attaque getAttaque() {
+		return attaque;
+	}
+
+	public void setAttaque(Attaque attaque) {
+		this.attaque = attaque;
+	}
+
+	public Vivant getMonstre() {
+		return monstre;
+	}
+
+	public void setVivant(Monstre monstre) {
+		this.monstre = monstre;
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(attaque, vivant);
+		return Objects.hash(attaque, monstre);
 	}
 
 	@Override
@@ -43,7 +59,7 @@ public class MoveKey implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		MoveKey other = (MoveKey) obj;
-		return Objects.equals(attaque, other.attaque) && Objects.equals(vivant, other.vivant);
+		return Objects.equals(attaque, other.attaque) && Objects.equals(monstre, other.monstre);
 	}
 
 }

@@ -19,8 +19,8 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
 @EnableTransactionManagement
-@ComponentScan(basePackages = {"formationJpaSpring.dao","formationJpaSpring.services"})
-@EnableJpaRepositories(basePackages = "formationJpaSpring.repository")
+@ComponentScan(basePackages = {"sufod.services"})
+@EnableJpaRepositories(basePackages = "sufod.repository")
 public class AppConfig {
 
 	// DataSource=>base de donnees
@@ -28,7 +28,7 @@ public class AppConfig {
 	public BasicDataSource dataSource() {
 		BasicDataSource dataSource = new BasicDataSource();
 		dataSource.setDriverClassName("org.postgresql.Driver");
-		dataSource.setUrl("jdbc:postgresql://localhost:5432/formation");
+		dataSource.setUrl("jdbc:postgresql://localhost:5432/Sufod");
 		dataSource.setUsername("postgres");
 		dataSource.setPassword("postgres");
 		return dataSource;
@@ -39,7 +39,7 @@ public class AppConfig {
 			@Qualifier("dataSource") BasicDataSource dataSource) {
 		LocalContainerEntityManagerFactoryBean emf = new LocalContainerEntityManagerFactoryBean();
 		emf.setDataSource(dataSource);
-		emf.setPackagesToScan("formationJpaSpring.entity");
+		emf.setPackagesToScan("sufod.entity");
 		emf.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
 		Properties properties = new Properties();
 		properties.setProperty("hibernate.hbm2ddl.auto", "create");
