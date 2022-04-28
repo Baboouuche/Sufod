@@ -9,7 +9,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "joueur")
-@SequenceGenerator(name = "seqPersonne", sequenceName = "seq_joueur", allocationSize = 1)
+@SequenceGenerator(name = "seqCompte", sequenceName = "seq_joueur", allocationSize = 1)
 public class Joueur extends Compte{
 
 	public Joueur() {

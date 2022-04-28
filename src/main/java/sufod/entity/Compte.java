@@ -17,7 +17,7 @@ public class Compte {
 	
 /*----------- Attributs -----------*/
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqPersonne")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqCompte")
 	@Column(name = "id")
 	private Long id;
 	

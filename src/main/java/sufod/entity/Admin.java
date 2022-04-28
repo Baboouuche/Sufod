@@ -10,7 +10,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "admin")
-@SequenceGenerator(name = "seqPersonne", sequenceName = "seq_admin", allocationSize = 1)
+@SequenceGenerator(name = "seqCompte", sequenceName = "seq_admin", allocationSize = 1)
 public class Admin extends Compte {
 	
 	public Admin() {
