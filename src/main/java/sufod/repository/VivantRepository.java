@@ -6,4 +6,7 @@ import sufod.entity.Vivant;
 
 public interface VivantRepository extends JpaRepository<Vivant, Integer> {
 
+	
+	
+	
 }
