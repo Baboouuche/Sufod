@@ -6,8 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import sufod.entity.Compte;
+
 import sufod.exception.CompteException;
+
 import sufod.repository.CompteRepository;
+import sufod.repository.PersonnageRepository;
 
 @Service
 public class CompteServices {
@@ -15,6 +18,9 @@ public class CompteServices {
 	
 	@Autowired
 	private CompteRepository compteRepo;
+	
+	@Autowired
+	private PersonnageRepository persoRepo;
 	
 	public List<Compte> getAll() {
 		return compteRepo.findAll();
@@ -48,6 +54,7 @@ public class CompteServices {
 
 	public void delete(Long id) {
 		Compte compte = getById(id);
+		persoRepo.deleteByCompte(compte);
 		compteRepo.delete(compte);
 	}
 
