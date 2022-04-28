@@ -1,11 +1,9 @@
 package sufod.entity;
 
+import java.util.Objects;
 import java.util.Set;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -19,8 +17,8 @@ public class Monstre extends Vivant{
 	//@Id
 	//@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqMonstre")
 	/*----------- Attributs -----------*/
-	private int minDrop;
-	private int maxDrop;
+	
+	private int Drop;
 	
 	@OneToMany(mappedBy="key.monstre")
 	private Set<Move> moveSet;
@@ -36,32 +34,25 @@ public class Monstre extends Vivant{
 
 	/*----------- Getters & Setters -----------*/
 
-
-	public int getMinDrop() {
-		return minDrop;
+	public int getDrop() {
+		return Drop;
 	}
 
 
-
-
-	public void setMinDrop(int minDrop) {
-		this.minDrop = minDrop;
+	public void setDrop(int drop) {
+		Drop = drop;
 	}
 
 
-
-
-	public int getMaxDrop() {
-		return maxDrop;
+	public Set<Move> getMoveSet() {
+		return moveSet;
 	}
 
 
-
-
-	public void setMaxDrop(int maxDrop) {
-		this.maxDrop = maxDrop;
+	public void setMoveSet(Set<Move> moveSet) {
+		this.moveSet = moveSet;
 	}
-
-
 	
+	
+
 }
