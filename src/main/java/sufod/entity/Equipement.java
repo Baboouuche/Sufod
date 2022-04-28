@@ -25,6 +25,8 @@ public class Equipement {
 	private double attPhysique;
 	private double attDistance;
 	private double Esquive;
+	private int pa;
+	private int pm;
 	PartieCorps localisation;
 
 	public Equipement() {
@@ -32,8 +34,8 @@ public class Equipement {
 	}
 
 	public Equipement(EquipementKey key, int quantite, int pv, double defMagique, double defPhysique,
-			double defDistance, double attMagique, double attPhysique, double attDistance, double esquive,
-			PartieCorps localisation) {
+			double defDistance, double attMagique, double attPhysique, double attDistance, double esquive, int pa,
+			int pm, PartieCorps localisation) {
 		this.key = key;
 		this.quantite = quantite;
 		this.pv = pv;
@@ -44,7 +46,25 @@ public class Equipement {
 		this.attPhysique = attPhysique;
 		this.attDistance = attDistance;
 		Esquive = esquive;
+		this.pa = pa;
+		this.pm = pm;
 		this.localisation = localisation;
+	}
+
+	public int getPa() {
+		return pa;
+	}
+
+	public void setPa(int pa) {
+		this.pa = pa;
+	}
+
+	public int getPm() {
+		return pm;
+	}
+
+	public void setPm(int pm) {
+		this.pm = pm;
 	}
 
 	public int getPv() {
@@ -138,7 +158,7 @@ public class Equipement {
 	@Override
 	public int hashCode() {
 		return Objects.hash(Esquive, attDistance, attMagique, attPhysique, defDistance, defMagique, defPhysique, key,
-				localisation, pv, quantite);
+				localisation, pa, pm, pv, quantite);
 	}
 
 	@Override
@@ -157,8 +177,8 @@ public class Equipement {
 				&& Double.doubleToLongBits(defDistance) == Double.doubleToLongBits(other.defDistance)
 				&& Double.doubleToLongBits(defMagique) == Double.doubleToLongBits(other.defMagique)
 				&& Double.doubleToLongBits(defPhysique) == Double.doubleToLongBits(other.defPhysique)
-				&& Objects.equals(key, other.key) && localisation == other.localisation && pv == other.pv
-				&& quantite == other.quantite;
+				&& Objects.equals(key, other.key) && localisation == other.localisation && pa == other.pa
+				&& pm == other.pm && pv == other.pv && quantite == other.quantite;
 	}
 
 }

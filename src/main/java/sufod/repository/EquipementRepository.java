@@ -9,20 +9,18 @@ import org.springframework.data.repository.query.Param;
 
 import sufod.entity.Equipement;
 import sufod.entity.Item;
+import sufod.entity.PartieCorps;
 import sufod.entity.Personnage;
 
-public interface ItemRepository extends JpaRepository<Item, Long> {
+public interface EquipementRepository extends JpaRepository<Item, Long> {
 
 	List<Item> findByNom(String nom);
 
 	List<Item> findByNomContaining(String nom);
 
 	List<Item> findByPersonnage(Personnage id);
-	
-	@Query("select i from Item i left join fetch i.ingredients")
-	Optional<Item> findIngredients(@Param("type") Long id);
-	
-	@Query("select i from Item i left join fetch i.equipements")
-	Optional<Item> findEquipements(@Param("id") Long id);
+
+	@Query("select e from Item e left join fetch e.equipements where e=:localisation")
+	Optional<Equipement> findEquipementsByPartieDuCorps(@Param("localisation") PartieCorps localisation);
 
 }

@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import sufod.entity.Item;
-import sufod.entity.Joueur;
+import sufod.entity.Personnage;
 
 public interface IngredientRepository extends JpaRepository<Item, Long> {
 
@@ -13,6 +13,6 @@ public interface IngredientRepository extends JpaRepository<Item, Long> {
 
 	List<Item> findByNomContaining(String nom);
 
-	List<Item> findByJoueur(Joueur id);
+	List<Item> findByPersonnage(Personnage id);
 
 }

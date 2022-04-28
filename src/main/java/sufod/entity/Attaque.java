@@ -20,6 +20,7 @@ public class Attaque {
 	private int degats;
 	private int paBase;
 	private int precision;
+	private int coupcritique;
 	@Enumerated(EnumType.STRING)
 	private TypeAtt type;
 	@Id
@@ -30,21 +31,23 @@ public class Attaque {
 
 	}
 
-	public Attaque(TypeAtt type, String nom, int degats, int paBase, int precision) {
+	public Attaque(TypeAtt type, String nom, int degats, int paBase, int precision,int coupcritique) {
 		this.nom = nom;
 		this.degats = degats;
 		this.paBase = paBase;
 		this.precision = precision;
 		this.type = type;
+		this.coupcritique = coupcritique;
 	}
 
-	public Attaque(Integer id, String nom, int degats, int paBase, int precision, TypeAtt type) {
+	public Attaque(Integer id, String nom, int degats, int paBase, int precision, TypeAtt type,int coupcritique) {
 		this.id = id;
 		this.nom = nom;
 		this.degats = degats;
 		this.paBase = paBase;
 		this.precision = precision;
 		this.type = type;
+		this.coupcritique = coupcritique;
 	}
 
 	public String getNom() {
@@ -93,6 +96,15 @@ public class Attaque {
 
 	public void setId(Integer id) {
 		this.id = id;
+	}
+	
+
+	public int getCoupcritique() {
+		return coupcritique;
+	}
+
+	public void setCoupcritique(int coupcritique) {
+		this.coupcritique = coupcritique;
 	}
 
 	@Override
