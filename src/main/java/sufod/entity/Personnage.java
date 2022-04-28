@@ -3,7 +3,8 @@ package sufod.entity;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-
+import javax.persistence.ForeignKey;
+import javax.persistence.JoinColumn;
 import javax.persistence.Table;
 @Entity
 @Table(name = "personnage")
@@ -11,9 +12,11 @@ public class Personnage extends Vivant{
 	
 	/*----------- Attributs -----------*/
 
-	private int idCompte;
+	@JoinColumn(name = "compte_id", foreignKey = @ForeignKey(name = "PERSONNAGE_COMPTE_ID_FK"))
+	private Compte compte;
 	
 	protected int pc;
+	
 	@Enumerated(EnumType.ORDINAL)
 	protected Metier metier;
 	
@@ -32,17 +35,16 @@ public class Personnage extends Vivant{
 	/*----------- Constrictors -----------*/	
 	
 	public Personnage () {
-		
-		
 	}
+	
 	public Personnage(int id, String nom, String description, int niveau, Classe classe, int pvMax, int esquive,
 			int vitesse, int paMax, int pmMax, int attMagique, int attPhysique, int attDistance, int defMagique,
-			int defPhysique, int defDistance, int pc, Metier metier,int idCompte) {
+			int defPhysique, int defDistance, int pc, Metier metier,Compte compte) {
 		
 		super(id, nom, description, niveau, classe, pvMax, esquive, vitesse, paMax, pmMax, attMagique, attPhysique,
 				attDistance, defMagique, defPhysique, defDistance);
 		
-		this.idCompte = idCompte;
+		this.compte = compte;
 		this.pc = pc;
 		
 		this.metier = metier;
@@ -50,12 +52,12 @@ public class Personnage extends Vivant{
 	
 	public Personnage(String nom, String description, int niveau, Classe classe, int pvMax, int esquive,
 			int vitesse, int paMax, int pmMax, int attMagique, int attPhysique, int attDistance, int defMagique,
-			int defPhysique, int defDistance, int pc, Metier metier,int idCompte) {
+			int defPhysique, int defDistance, int pc, Metier metier,Compte compte) {
 		
 		super(nom, description, niveau, classe, pvMax, esquive, vitesse, paMax, pmMax, attMagique, attPhysique,
 				attDistance, defMagique, defPhysique, defDistance);
 
-		this.idCompte = idCompte;
+		this.compte = compte;
 		this.pc = pc;
 		
 		this.metier = metier;
@@ -69,13 +71,13 @@ public class Personnage extends Vivant{
 	}
 
 
-	public int getIdCompte() {
-		return idCompte;
+	public Compte getCompte() {
+		return compte;
 	}
 
 
-	public void setIdCompte(int idCompte) {
-		this.idCompte = idCompte;
+	public void setCompte(Compte idCompte) {
+		this.compte = compte;
 	}
 
 
