@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import sufod.entity.Attaque;
+import sufod.entity.Monstre;
 import sufod.exception.AttaqueException;
 import sufod.repository.AttaqueRepository;
 
@@ -47,4 +48,7 @@ public class AttaqueService {
 		attaque.setId(id);
 		delete(attaque);
 	}
+	
+	
+		
 }

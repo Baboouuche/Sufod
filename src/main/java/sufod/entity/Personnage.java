@@ -1,9 +1,14 @@
 package sufod.entity;
 
+import java.util.Objects;
+import java.util.Set;
+
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-
+import javax.persistence.ForeignKey;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 @Entity
 @Table(name = "personnage")
@@ -27,6 +32,12 @@ public class Personnage extends Vivant{
 	protected int equipBras;
 	
 	private int xp;
+	
+	@OneToMany (mappedBy = "personnage")
+	private Set<Attaque> attaquePersonnage;
+	
+	@OneToMany (mappedBy = "personnage")
+	private Set<Equipement> equipementPersonnage;
 
 	
 	/*----------- Constrictors -----------*/	
@@ -180,6 +191,42 @@ public class Personnage extends Vivant{
 
 	public void setXp(int xp) {
 		this.xp = xp;
+	}
+	public Set<Attaque> getAttaquePersonnage() {
+		return attaquePersonnage;
+	}
+	public void setAttaquePersonnage(Set<Attaque> attaquePersonnage) {
+		this.attaquePersonnage = attaquePersonnage;
+	}
+	public Set<Equipement> getEquipementPersonnage() {
+		return equipementPersonnage;
+	}
+	public void setEquipementPersonnage(Set<Equipement> equipementPersonnage) {
+		this.equipementPersonnage = equipementPersonnage;
+	}
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = super.hashCode();
+		result = prime * result + Objects.hash(attaquePersonnage, equipBras, equipCou, equipJambe, equipMain, equipPied,
+				equipPlastron, equipPoignet, equipTete, equipementPersonnage, idCompte, metier, pc, xp);
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (!super.equals(obj))
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Personnage other = (Personnage) obj;
+		return Objects.equals(attaquePersonnage, other.attaquePersonnage) && equipBras == other.equipBras
+				&& equipCou == other.equipCou && equipJambe == other.equipJambe && equipMain == other.equipMain
+				&& equipPied == other.equipPied && equipPlastron == other.equipPlastron
+				&& equipPoignet == other.equipPoignet && equipTete == other.equipTete
+				&& Objects.equals(equipementPersonnage, other.equipementPersonnage) && idCompte == other.idCompte
+				&& metier == other.metier && pc == other.pc && xp == other.xp;
 	}
 	
 
