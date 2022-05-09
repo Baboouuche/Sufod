@@ -28,7 +28,7 @@ public class AppConfig {
 	public BasicDataSource dataSource() {
 		BasicDataSource dataSource = new BasicDataSource();
 		dataSource.setDriverClassName("org.postgresql.Driver");
-		dataSource.setUrl("jdbc:postgresql://localhost:5432/Sufod");
+		dataSource.setUrl("jdbc:postgresql://localhost:5432/sufod");
 		dataSource.setUsername("postgres");
 		dataSource.setPassword("postgre");
 		return dataSource;

@@ -4,11 +4,14 @@ import java.util.Objects;
 import java.util.Set;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 import javax.persistence.Version;
 
 @MappedSuperclass
@@ -17,7 +20,7 @@ public class Compte {
 	
 /*----------- Attributs -----------*/
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqPersonne")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqCompte")
 	@Column(name = "id")
 	private Long id;
 	
@@ -32,7 +35,7 @@ public class Compte {
 	@Column(name = "surname")
 	private String pseudo;
 	
-	@OneToMany(mappedBy = "key.compte")
+	@OneToMany(mappedBy = "compte")
 	private Set<Personnage> personnages;
 	
 	@Version

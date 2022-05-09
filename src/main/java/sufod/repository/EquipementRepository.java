@@ -18,6 +18,6 @@ public interface EquipementRepository extends JpaRepository<Equipement, Integer>
 	List<Equipement> findAllMonstre(@Param("monstre") Monstre monstre);
 	
 	@Query("Select e from Equipement e left join fetch e.personnage =:personnage")
-	List<Equipement> findAllPersonnage(@Param("monstre") Personnage personnage);
+	List<Equipement> findAllPersonnage(@Param("personnage") Personnage personnage);
 
 }

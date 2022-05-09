@@ -17,6 +17,6 @@ public interface AttaqueRepository extends JpaRepository<Attaque, Integer>{
 	List<Attaque> findAllMonstre(@Param("monstre") Monstre monstre);
 	
 	@Query("Select a from Attaque a left join fetch a.personnage =:personnage")
-	List<Attaque> findAllPersonnage(@Param("monstre") Personnage personnage);
+	List<Attaque> findAllPersonnage(@Param("personnage") Personnage personnage);
 
 }

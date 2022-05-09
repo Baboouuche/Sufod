@@ -8,6 +8,7 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.ForeignKey;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 @Entity
@@ -38,6 +39,10 @@ public class Personnage extends Vivant{
 	
 	@OneToMany (mappedBy = "personnage")
 	private Set<Equipement> equipementPersonnage;
+	
+	@ManyToOne
+	@JoinColumn(name = "compte_id", foreignKey = @ForeignKey(name = "PERSONNAGE_COMPTE_ID_FK"))
+	private Compte compte;
 
 	
 	/*----------- Constrictors -----------*/	
@@ -204,12 +209,21 @@ public class Personnage extends Vivant{
 	public void setEquipementPersonnage(Set<Equipement> equipementPersonnage) {
 		this.equipementPersonnage = equipementPersonnage;
 	}
+	
+	
+	
+	public Compte getCompte() {
+		return compte;
+	}
+	public void setCompte(Compte compte) {
+		this.compte = compte;
+	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = super.hashCode();
-		result = prime * result + Objects.hash(attaquePersonnage, equipBras, equipCou, equipJambe, equipMain, equipPied,
-				equipPlastron, equipPoignet, equipTete, equipementPersonnage, idCompte, metier, pc, xp);
+		result = prime * result + Objects.hash(attaquePersonnage, compte, equipBras, equipCou, equipJambe, equipMain,
+				equipPied, equipPlastron, equipPoignet, equipTete, equipementPersonnage, idCompte, metier, pc, xp);
 		return result;
 	}
 	@Override
@@ -221,13 +235,14 @@ public class Personnage extends Vivant{
 		if (getClass() != obj.getClass())
 			return false;
 		Personnage other = (Personnage) obj;
-		return Objects.equals(attaquePersonnage, other.attaquePersonnage) && equipBras == other.equipBras
-				&& equipCou == other.equipCou && equipJambe == other.equipJambe && equipMain == other.equipMain
-				&& equipPied == other.equipPied && equipPlastron == other.equipPlastron
+		return Objects.equals(attaquePersonnage, other.attaquePersonnage) && Objects.equals(compte, other.compte)
+				&& equipBras == other.equipBras && equipCou == other.equipCou && equipJambe == other.equipJambe
+				&& equipMain == other.equipMain && equipPied == other.equipPied && equipPlastron == other.equipPlastron
 				&& equipPoignet == other.equipPoignet && equipTete == other.equipTete
 				&& Objects.equals(equipementPersonnage, other.equipementPersonnage) && idCompte == other.idCompte
 				&& metier == other.metier && pc == other.pc && xp == other.xp;
 	}
+	
 	
 
 
